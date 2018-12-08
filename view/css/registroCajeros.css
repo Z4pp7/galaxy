@@ -23,12 +23,12 @@ p{
     font-size:15px;
     font-family: Microsoft Yi Baiti;
     text-align: center;
-    padding-bottom:10px;
-     color: #ededed;
+    padding-bottom:1px;
+/*     color: #ededed;*/
 }
 .titulo_menu{
-    padding-top:30px; 
-    padding-bottom: 30px;
+    padding-top:20px; 
+    padding-bottom: 20px;
     margin-bottom: 1px;
     font-family: Simplifica;
     text-align: center;
@@ -37,14 +37,13 @@ p{
 .datos
 {
  
-     margin-top: 30px;
+    margin-top: 30px;
     margin-left:10%;
- 
     float: left;  
 
 
 }
-.nombre,.cedula,.direccion,.telefono,.contrasena
+.nombre,.cedula,.direccion,.telefono,.contrasena,.apellido, .fecha, .correo, .ciudad
 {
 
     background-color:#fff;
@@ -54,10 +53,14 @@ p{
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
-  
-    padding: 12px;
+    width: 60%;
+    padding: 8px;
     resize: vertical;
 
+}
+
+.apellido{
+    margin-left: 43.5px;
 }
 
 div
@@ -68,7 +71,9 @@ div
 
 }
 
-.ico_cedula,.ico_user,.ico_usuarios,.ico_password,.ico_keyid{
+.ico_cedula,.ico_user,.ico_usuarios,.ico_password,.ico_keyid,
+.ico_calendario,.ico_calendario,.ico_telefono, .ico_direccion,
+.ico_correo, .ico_estaod, .ico_ciudad{
     color:#b2b2b2;
     font-size: 23px;   
 }
@@ -79,14 +84,17 @@ div
 
 }
 .ico_cedula{
-    padding-right: 16px;
+    padding-right:11px;
 }
 
 .ico_user
 {
-    padding-right: 16px;
+    padding-right: 17px;
 }
 
+.ico_ciudad{
+    padding-right: 13px;
+}
 .ico_usuarios
 {
     padding-right: 7px;
@@ -97,13 +105,28 @@ div
     padding-right: 16px;
 }
 
+.ico_calendario{
+      padding-right: 16.5px;
+}
+.ico_direccion{
+      padding-right: 19px;
+}
+.ico_correo{
+      padding-right: 12px;
+}
+.ico_telefono{
+      padding-right: 20px;
+}
+.ico_estaod{
+      padding-right: 12px;
+}
 .button-guardar
 {
 
     overflow:hidden;
     margin-top: 5px;
     margin-left: 43px;
-    padding:12px 106px  ;
+    padding:8px ;
     background-color:#ededed;
     border:0px solid #ededed;
     box-shadow: 0px 0px 1px #777777;
@@ -113,12 +136,13 @@ div
     font-family: Microsoft Yi Baiti;
     font-weight: bold;
     text-align: center;
+    width: 66%;
 }
 
 .button-guardar:hover
 {
     box-shadow: 0px 0px 1px #777777;
-    background-color: #b2b2b2;
+    background-color: #777777;
     color: white;
 }
 
@@ -146,22 +170,11 @@ div
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
-    padding:12px 67px  ;
-
-}
-    .tipo1
-{
-    background-color:#fff;
-    border:1px solid #b2b2b2;
-    font-size: 15px;
-    font-family: Microsoft Yi Baiti;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding:12px 63.5px  ;
-
-}
+    padding:8px;
+    width: 66.5%;
  
+}
+
    
    
 
@@ -191,58 +204,21 @@ tr:hover td{
 }
 
 
-/*
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; 
-}
 
- Tooltip text 
-.tooltip .tooltiptext {
-     font-family:  Microsoft Yi Baiti; 
-    visibility: hidden;
-    width: 90px;
-    background-color: #777777;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-
-     Position the tooltip text - see examples below! 
-    position: absolute;
-    z-index: 1;
-}
-
- Show the tooltip text when you mouse over the tooltip container 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-.tooltip .tooltiptext {
-    top: -1px;
-    left: 110%; 
-}
-.tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    right: 100%;  To the left of the tooltip 
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent #777777 transparent transparent;
-
-
-
-}
-*/
 
 
 .datosTabla{
     padding-top: 51px;
-    padding-right: 50px;
+    padding-right: 30px;
 }
 
+
+
+.datosTabla2{
+    padding-top: 51px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
 
 
 #contenedor{ 
@@ -261,10 +237,42 @@ tr:hover td{
 
 #lateral2{ 
  
-    width: 25%;
-
+    width: 20%;
     padding-right: 0px;
     float:left; 
 
 
 }  
+
+.ico_t{
+    padding-right: 5px;
+}
+.ico_u{
+    padding-right: 5px;
+}
+.ico_d{
+    padding-right: 6px;
+}
+.ico_a{
+    padding-right: 3px;
+}
+.ico_f{
+    padding-right: 6px;
+}
+.ico_b{
+    padding-right: 3px;
+}
+
+.logueado{
+    font-family: Microsoft Yi Baiti;
+
+    position:absolute;
+    top: 2%;
+    left: 86%;
+   
+}
+
+.ico_logueado{
+    color: #777777;
+    padding-right: 5px;
+}
