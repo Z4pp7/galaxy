@@ -13,9 +13,9 @@ include '../../model/Usuario.php';
     <head>
         <meta charset="UTF-8">
         <title>Inicio</title>
-        <link rel="stylesheet" type="text/css" href="../css/fontawesome-all.css">
-        <link rel="stylesheet" type="text/css" href="../css/home.css">
-        <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
+        <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/menuToggle.css">
 
     </head>
     <body onload="openSideMenu()">
