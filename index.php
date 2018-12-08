@@ -20,7 +20,7 @@ and open the template in the editor.
         </section>
 
         <br>
-            <form action="../controller/controller.php">
+        <form action="controller/con_main.php">
                 <div><i class="ico_usuario fas fa-user-tie" aria-hidden="true"></i>
                         <input type="text" name="usuario" placeholder="Usuario" class="nombre" required/></div>
                 <div><i class="ico_password fas fa-unlock-alt" aria-hidden="true"></i>
