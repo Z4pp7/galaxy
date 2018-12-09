@@ -8,20 +8,20 @@
  */
 class Database {
 //
-    private static $dbName = 'dipemc7oupfn7';
-    private static $dbHost = 'ec2-79-125-124-30.eu-west-1.compute.amazonaws.com';
-    private static $port = '5432';
-    private static $dbUsername = 'oblfmbnbxghntp';
-    private static $dbUserPassword = '70ead18592334308bccd4cd4455ed3129653d4805f8d2abf0ee9589ab6a2e374';
-    private static $conexion=null;
+//    private static $dbName = 'dipemc7oupfn7';
+//    private static $dbHost = 'ec2-79-125-124-30.eu-west-1.compute.amazonaws.com';
+//    private static $port = '5432';
+//    private static $dbUsername = 'oblfmbnbxghntp';
+//    private static $dbUserPassword = '70ead18592334308bccd4cd4455ed3129653d4805f8d2abf0ee9589ab6a2e374';
+//    private static $conexion=null;
 //    
     
-//    private static $dbName = 'galaxy';
-//    private static $dbHost = 'localhost';
-//    private static $port = '5433';
-//    private static $dbUsername = 'postgres';
-//    private static $dbUserPassword = 'zappy';
-//    private static $conexion=null;
+    private static $dbName = 'galaxy';
+    private static $dbHost = 'localhost';
+    private static $port = '5433';
+    private static $dbUsername = 'postgres';
+    private static $dbUserPassword = 'zappy';
+    private static $conexion=null;
 
     /**
      * No se permite instanciar esta clase, se utilizan sus elementos

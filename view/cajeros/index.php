@@ -7,12 +7,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-//include("../../controller/iniciarSesion.php");
-//include '../../model/Usuario.php';
-
+include("../../controller/iniciarSesion.php");
+include '../../model/Usuario.php';
 include '../../model/Cajero.php';
-session_start();
-//$login = unserialize($_SESSION['sesion']);
+
+$login = unserialize($_SESSION['sesion']);
 ?>
 <html>
     <head>
@@ -25,7 +24,7 @@ session_start();
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/jquery.dataTables.min.js"></script>
-         <link rel="shortcut icon" href="view/img/planet.ico" />
+ <link rel="shortcut icon" href="../img/planet.ico" />
 
 
 
@@ -100,7 +99,7 @@ session_start();
 
                     <section class="titulo_menu">
                         <p>GALAXY</p>
-                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU();   ?></div>
+                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php  echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU();   ?></div>
 
                         <h1>REGISTRO DE CAJEROS</h1>       
                     </section>

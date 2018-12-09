@@ -1,19 +1,57 @@
 <?php
 
+require_once '../model/ModelLogin.php';
 require_once '../model/ModelCajero.php';
+require_once '../model/ModelUsuario.php';
 session_start();
 $opcion = $_REQUEST['opcion'];
+$login = new ModelLogin();
 $cajero = new ModelCajero();
+$usuario = new ModelUsuario();
 
 switch ($opcion) {
 
     case 'entrar':
+        
+                     
+        
+        $user = $_REQUEST['usuario'];
+        $contrasena = $_REQUEST['contrasena'];
+        $sesion = $login->verificacionUsuario($user, $contrasena);
 
-        $listaCajeros = $cajero->getCajeros();
-        $_SESSION['listaCajeros'] = serialize($listaCajeros);
+        if ($sesion->getNOMBRE_USU() == $user && $sesion->getPASS_USU() == $contrasena) {
 
 
-        header('Location: ../view/home/index.php');
+            $_SESSION['sesion'] = serialize($sesion);
+            $_SESSION["login"] = "login";
+
+            if ($sesion->getTIPO_USU() === "Administrador") {
+
+                $listaUsuarios = $usuario->getUsuarios();
+                $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+
+//                $listaProveedor = $proveedor->getProveedores();
+//                $_SESSION['listaProveedor'] = serialize($listaProveedor);
+
+                $listaCajeros = $cajero->getCajeros();
+                $_SESSION['listaCajeros'] = serialize($listaCajeros);
+                header('Location: ../view/home/index.php');
+            } else {
+
+//                $listaProveedor = $proveedor->getProveedores();
+//                $_SESSION['listaProveedor'] = serialize($listaProveedor);
+
+                $listaCajeros = $cajero->getCajeros();
+                $_SESSION['listaCajeros'] = serialize($listaCajeros);
+                      header('Location: ../view/home/index.php');
+
+//                header('Location: ../view/homeCajero/index.php');
+            }
+        } else {
+             header('Location: ../index.php');
+        }
+
+   
         break;
 
 
@@ -64,6 +102,6 @@ switch ($opcion) {
 
 
     default:
-        header('Location: ../view/cajeros/cargar.php');
+        header('Location: ../home/index.php');
 }
 

@@ -7,11 +7,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-//include("../../controller/iniciarSesion.php");
-//include '../../model/Usuario.php';
+include("../../controller/iniciarSesion.php");
+include '../../model/Usuario.php';
 include '../../model/Cajero.php';
-session_start();
-//$login = unserialize($_SESSION['sesion']);
+$login = unserialize($_SESSION['sesion']);
 ?>
 <html>
     <head>
@@ -26,7 +25,7 @@ session_start();
         <script src="../js/jquery.dataTables.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/registroCajeros.css">
         <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
- <link rel="shortcut icon" href="view/img/planet.ico" />
+ <link rel="shortcut icon" href="../img/planet.ico" />
         <script>
             $(document).ready(function () {
                 $('#tablaEmple').DataTable();
@@ -93,7 +92,7 @@ session_start();
 
                     <section class="titulo_menu">
                         <p>MÓDULO COMPRAS</p>
-                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
+                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php  echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
 
                         <h1>REGISTRO DE CAJEROS</h1>       
                     </section>
