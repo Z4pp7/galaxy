@@ -26,7 +26,7 @@ session_start();
         <script src="../js/jquery.dataTables.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/registroCajeros.css">
         <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
-
+ <link rel="shortcut icon" href="view/img/planet.ico" />
         <script>
             $(document).ready(function () {
                 $('#tablaEmple').DataTable();

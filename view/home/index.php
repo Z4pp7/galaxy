@@ -16,6 +16,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="../css/fontawesome-all.css">
         <link rel="stylesheet" type="text/css" href="../css/home.css">
         <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
+         <link rel="shortcut icon" href="view/img/planet.ico" />
 
     </head>
     <body onload="openSideMenu()">

@@ -25,6 +25,7 @@ session_start();
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/jquery.dataTables.min.js"></script>
+         <link rel="shortcut icon" href="view/img/planet.ico" />
 
 
 
