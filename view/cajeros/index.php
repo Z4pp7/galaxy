@@ -242,7 +242,7 @@ $login = unserialize($_SESSION['sesion']);
 
                         <form action=\"../../controller/con_main.php\" name=\"form\">
                             <input type=\"hidden\" value=\"cargar_cajero\" name=\"opcion\">
-                            <input type=\"hidden\" value=\"1\" name=\"id\">
+                            <input type=\"hidden\" value=\"".$dato->getID_CAJ()."\" name=\"id\">
                             <button type=\"submit\" class=\"button_tbl\">
                                 <i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i>
                             </button> </form></td> ";

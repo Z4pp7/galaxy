@@ -55,6 +55,7 @@ switch ($opcion) {
         break;
 
 
+        // CAJERO
     case 'guardar_cajero':
 
 
@@ -72,7 +73,6 @@ switch ($opcion) {
         $_SESSION['listaCajeros'] = serialize($listaCajeros);
         header('Location: ../view/cajeros/index.php');
         break;
-
 
     case 'cargar_cajero':
         $ID_CAJ = $_REQUEST['id'];
@@ -97,6 +97,43 @@ switch ($opcion) {
         $listaCajeros = $cajero->getCajeros();
         $_SESSION['listaCajeros'] = serialize($listaCajeros);
         header('Location: ../view/cajeros/index.php');
+        break;
+    
+    // USUARIO
+    
+     case 'guardar_usuario':
+        $ID_CAJ = $_REQUEST['cajero'];
+        $TIPO_USU = $_REQUEST['tipo'];
+        $NOMBRE_USU = $_REQUEST['nombre'];
+        $PASS_USU = $_REQUEST['contrasena'];
+        $usuario->crearUsuario($ID_CAJ, $TIPO_USU, $NOMBRE_USU, $PASS_USU);
+        $listaUsuarios = $usuario->getUsuarios();
+        $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+        header('Location: ../view/usuarios/index.php');
+        break;
+    case 'eliminar_usuario':
+        $ID_USU = $_REQUEST['id'];
+        $usuario->eliminarUsuario($ID_USU);
+        $listaUsuarios = $usuario->getUsuarios();
+        $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+        header('Location: ../view/usuarios/index.php');
+        break;
+    case 'cargar_usuario':
+        $ID_USU = $_REQUEST['id'];
+        $usu = $usuario->getUsuario($ID_USU);
+        $_SESSION['usuario'] = serialize($usu);
+        header('Location: ../view/usuarios/cargar.php');
+        break;
+    case 'actualizar_usuario':
+        $ID_USU = $_REQUEST['id_usuario'];
+        $ID_CAJ = $_REQUEST['cajero'];
+        $TIPO_USU = $_REQUEST['tipo'];
+        $NOMBRE_USU = $_REQUEST['nombre'];
+        $PASS_USU = $_REQUEST['contrasena'];
+        $usuario->actualizarUsuario($ID_USU, $ID_CAJ, $TIPO_USU, $NOMBRE_USU, $PASS_USU);
+        $listaUsuarios = $usuario->getUsuarios();
+        $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+        header('Location: ../view/usuarios/index.php');
         break;
 
 

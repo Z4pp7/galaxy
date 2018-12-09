@@ -103,7 +103,7 @@ $login = unserialize($_SESSION['sesion']);
                           <?php 
                             $usu= unserialize($_SESSION['usuario']);
                           ?>
-                            <form action="../../controller/controller.php">
+                            <form action="../../controller/con_main.php">
                                 <section class="datos">
                                     <div>Id</div>
                                     <i class="ico_keyid fas fa-key" aria-hidden="true"></i>
@@ -179,9 +179,22 @@ $login = unserialize($_SESSION['sesion']);
                                                 echo "<td>" . $dato->getNOMBRE_USU() . "</td>";
                                                 echo "<td>" . $dato->getPASS_USU() . "</td>";
                                                 echo "<td>" . $dato->getTIPO_USU() . "</td>";
-                                                echo "<td><a href='../../controller/controller.php?opcion=eliminar_usuario&id=" . $dato->getID_USU() . "' class=\"eliminar\"><i class=\"ico_borrar fa fa-trash\" aria-hidden=\"true\"></i></a></td>";
-                                                echo "<td><a href='../../controller/controller.php?opcion=cargar_usuario&id=" . $dato->getID_USU() . "' class=\"actualizar\"><i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i></a></td>";
-
+                                                echo  "<td>
+                                                    <form action=\"../../controller/con_main.php\" name=\"form\">
+                            <input type=\"hidden\" value=\"eliminar_usuario\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"".$dato->getID_USU()."\" name=\"id\">
+                            <button type=\"submit\" class=\"button_tbl\">
+                                <i class=\"ico_borrar fas fa-trash\" aria-hidden=\"true\"></i>
+                            </button> </form></td> ";
+                                                
+                                                
+                                                echo "<td>
+                                                    <form action=\"../../controller/con_main.php\" name=\"form\">
+                            <input type=\"hidden\" value=\"cargar_usuario\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"".$dato->getID_USU()."\" name=\"id\">
+                            <button type=\"submit\" class=\"button_tbl\">
+                                <i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i>
+                            </button> </form></td> ";
                                                 echo "</tr>";
                                             }
                                         } else {

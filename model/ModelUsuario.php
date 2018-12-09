@@ -19,7 +19,7 @@ class ModelUsuario {
     public function getUsuarios() {
 
         $pdo = Database::connect();
-        $sql = "select u.id_usu,u.tipo_usu, c.cedula_caj,c.nombres_caj,c.apellidos_caj,u.nombre_usu,u.pass_usu from tbl_usuarios u inner join tbl_cajero c on u.id_caj=c.id_caj;";
+        $sql = "select u.id_usu,u.tipo_usu, c.cedula_caj,c.nombres_caj,c.apellidos_caj,u.nombre_usu,u.pass_usu from tbl_usuarios u inner join tbl_cajeros c on u.id_caj=c.id_caj;";
                 $resultado = $pdo->query($sql);
         $listado = array();
         foreach ($resultado as $dato) {
@@ -40,7 +40,7 @@ class ModelUsuario {
     public function getUsuario($ID) {
 
         $pdo = Database::connect();
-        $sql = "SELECT u.ID_USU,u.TIPO_USU, c.CEDULA_CAJ,c.NOMBRES_CAJ,c.APELLIDOS_CAJ,c.ID_CAJ,u.NOMBRE_USU,u.PASS_USU FROM tbl_usuarios u INNER join tbl_cajero c on u.ID_CAJ=c.ID_CAJ where ID_USU=?;";
+        $sql = "SELECT u.id_usu,u.tipo_usu, c.cedula_caj,c.nombres_caj,c.apellidos_caj,c.id_caj,u.nombre_usu,u.pass_usu FROM tbl_usuarios u INNER join tbl_cajeros c on u.id_caj=c.id_caj where id_usu=?";
         $consulta = $pdo->prepare($sql);
         $consulta->execute(array($ID));
         $dato = $consulta->fetch(PDO::FETCH_ASSOC);
@@ -76,7 +76,7 @@ class ModelUsuario {
 
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "delete from TBL_USUARIOS where ID_USU=?";
+        $sql = "delete from tbl_usuarios where id_usu=?";
         $consulta = $pdo->prepare($sql);
         $consulta->execute(array($ID));
         Database::disconnect();
