@@ -7,11 +7,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-include("../../controller/iniciarSesion.php");
-include '../../model/Usuario.php';
+//include("../../controller/iniciarSesion.php");
+//include '../../model/Usuario.php';
 include '../../model/Cajero.php';
-
-$login = unserialize($_SESSION['sesion']);
+session_start();
+//$login = unserialize($_SESSION['sesion']);
 ?>
 <html>
     <head>
@@ -93,7 +93,7 @@ $login = unserialize($_SESSION['sesion']);
 
                     <section class="titulo_menu">
                         <p>MÓDULO COMPRAS</p>
-                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
+                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
 
                         <h1>REGISTRO DE CAJEROS</h1>       
                     </section>
@@ -103,7 +103,7 @@ $login = unserialize($_SESSION['sesion']);
                             <?php
                             $caj = unserialize($_SESSION['cajero']);
                             ?>
-                            <form action="../../controller/controller.php" name="form">
+                            <form action="../../controller/con_main.php" name="form">
                                 <section class="datos">
                                     <div>Id</div>
                                     <i class="ico_keyid fas fa-key" aria-hidden="true"></i>
@@ -244,8 +244,19 @@ $login = unserialize($_SESSION['sesion']);
                                                 echo "<td>" . $dato->getTELEFONO_CAJ() . "</td>";
                                                 echo "<td>" . $dato->getEMAIL_CAJ() . "</td>";
                                                 echo "<td>" . $dato->getESTADO_CAJ() . "</td>";
-                                                echo "<td><a href='../../controller/controller.php?opcion=cargar_cajero&id=" . $dato->getID_CAJ() . "' class=\"actualizar\"><i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i></a></td>";
+                                               
+                                                
+                                                      echo "<td>   
+                                
 
+                        <form action=\"../../controller/con_main.php\" name=\"form\">
+                            <input type=\"hidden\" value=\"cargar_cajero\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"".$dato->getID_CAJ()."\" name=\"id\">
+                            <button type=\"submit\" class=\"button_tbl\">
+                                <i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i>
+                            </button> </form></td> ";
+
+                                                echo "</tr>";
                                                 echo "</tr>";
                                             }
                                         } else {

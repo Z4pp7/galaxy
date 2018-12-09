@@ -10,13 +10,14 @@ and open the template in the editor.
         <title>Inicio de Sesión</title>
         <link rel="stylesheet" type="text/css" href="view/css/fontawesome-all.css">
         <link rel="stylesheet" type="text/css" href="view/css/login.css">
+        <link rel="shortcut icon" href="view/img/planet.ico" />
         <script type="text/javascript" src="js/validaciones.js"></script>
     </head>
     <body>
 
         <section class="titulo">
             <h1>GALAXY</h1>
-            <p>SISTEMA DE FACTURACIÓN</p>
+            <p>SISTEMA DE CONTROL DE INVENTARIO</p>
         </section>
 
         <br>

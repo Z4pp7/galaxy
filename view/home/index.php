@@ -5,8 +5,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-include("../../controller/iniciarSesion.php");
-include '../../model/Usuario.php';
+//include("../../controller/iniciarSesion.php");
+//include '../../model/Usuario.php';
 //$login = unserialize($_SESSION['sesion']);
 ?>
 <html>
@@ -87,7 +87,7 @@ include '../../model/Usuario.php';
                                   
                                 <p>BIENVENIDO</p>
                                 <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU()." ".$login->getAPELLIDOS_USU();?></div>
-                                <h1>MODULO DE COMPRAS</h1>
+                                <h1>SISTEMA DE CONTROL DE INVENTARIO</h1>
 
                             </section>
                         </div>

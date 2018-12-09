@@ -6,6 +6,8 @@
 body{
 
     background:#fff;
+        background-image: url(../img/background_3.png);
+  
    
 }
 @font-face {
@@ -127,40 +129,27 @@ div
     margin-top: 5px;
     margin-left: 43px;
     padding:8px ;
-    background-color:#ededed;
-    border:0px solid #ededed;
-    box-shadow: 0px 0px 1px #777777;
+    background-color:#f3614b;
+    border:0px solid #f3614b;
+    box-shadow: 0px 0px 1px #f3614b;
     cursor: pointer;
-    color: #b2b2b2;
+    color: #F0F0F0;
     font-size: 18px;
     font-family: Microsoft Yi Baiti;
     font-weight: bold;
     text-align: center;
     width: 66%;
+        border-radius: 50px;
 }
 
 .button-guardar:hover
 {
-    box-shadow: 0px 0px 1px #777777;
-    background-color: #777777;
+    box-shadow: 0px 0px 1px #f03c21;
+    background-color: #f03c21;
     color: white;
 }
 
 
-.ico_borrar
-{
-    color:#ff7585 ;
-    font-size: 20px;
-
-}
-.ico_actualizar
-{
-    color:#1fdbb8 ;
-    font-size: 20px;
-
-}
-
-   
  .tipo
 {
     background-color:#fff;
@@ -189,13 +178,16 @@ table{
     font-family: Microsoft Yi Baiti; 
 
 }
+
+
 th {
 
-    background: #ededed;
+    background: #b1f6e9;
 
 
 
 }
+
 
 
 tr:hover td{  
@@ -208,7 +200,7 @@ tr:hover td{
 
 
 .datosTabla{
-    padding-top: 51px;
+    padding-top: 30px;
     padding-right: 30px;
 }
 
@@ -276,3 +268,39 @@ tr:hover td{
     color: #777777;
     padding-right: 5px;
 }
+
+.button_tbl
+{
+    overflow:hidden;
+    padding:8px ;
+    background-color:transparent;
+    border:0px solid transparent;
+    box-shadow: 0px 0px 1px transparent;
+    cursor: pointer;
+    color: #b2b2b2;
+    font-size: 18px;
+    text-align: center;
+  
+}
+
+.ico_borrar
+{
+    color:#ff7585 ;
+    font-size: 20px;
+
+}
+.ico_actualizar
+{
+    color:#1fdbb8 ;
+    font-size: 20px;
+
+}
+
+.ico_actualizar:hover,.ico_borrar:hover
+{
+     color: #777777;
+    
+}
+
+
+

@@ -33,7 +33,7 @@
   z-index:1;
   top:0;
   left:0;
-  background-color:#34383d;
+  background-color:#1d2125;
 /*opacity:0.5;*/
   overflow-x:hidden;
   padding-top:5px;
@@ -50,7 +50,7 @@
 }
 
 .side-nav a:hover, .side-nav ul:hover{
-  background: #1c1e21;
+  background: #f24e36;
   color:#fff;
 }
 

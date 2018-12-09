@@ -9,25 +9,30 @@ and open the template in the editor.
 <?php
 //include("../../controller/iniciarSesion.php");
 //include '../../model/Usuario.php';
-//include '../../model/Cajero.php';
 
+include '../../model/Cajero.php';
+session_start();
 //$login = unserialize($_SESSION['sesion']);
-
 ?>
 <html>
     <head>
         <meta charset="UTF-8"> 
         <title>Registro</title>
-        <link rel="stylesheet" type="text/css" href="../css/fontawesome-all.css">
+
         <script src="../js/jquery-2.1.4.js"></script>
         <script src="../js/bootstrap-table.js"></script>
         <link href="../css/bootstrap-table.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/jquery.dataTables.min.js"></script>
+
+
+
+        <link rel="stylesheet" type="text/css" href="../css/fontawesome-all.css">
         <link rel="stylesheet" type="text/css" href="../css/registroCajeros.css">
         <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
-
+        
+   
         <script>
             $(document).ready(function () {
                 $('#tablaEmple').DataTable();
@@ -79,8 +84,8 @@ and open the template in the editor.
                     <script>
                         function openSideMenu()
                         {
-                            document.getElementById('side-menu').style.width = '150px';
-                            document.getElementById('principal').style.marginLeft = '150px';
+                            document.getElementById('side-menu').style.width = '175px';
+                            document.getElementById('principal').style.marginLeft = '175px';
                         }
                         function closeSideMenu()
                         {
@@ -93,15 +98,15 @@ and open the template in the editor.
                 <div id="principal"> 
 
                     <section class="titulo_menu">
-                        <p>MÓDULO COMPRAS</p>
-                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
+                        <p>GALAXY</p>
+                        <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php // echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU();   ?></div>
 
                         <h1>REGISTRO DE CAJEROS</h1>       
                     </section>
 
                     <div id="contenedor">
                         <div id="lateral2">
-                            <form action="../../controller/controller.php" name="form">
+                            <form action="../../controller/con_main.php" name="form">
                                 <section class="datos">
                                     <div>Cédula/RUC/Pasaporte</div>
                                     <i class="ico_cedula fa fa-id-card" aria-hidden="true"></i>
@@ -196,7 +201,7 @@ and open the template in the editor.
                         <div id="principal2">
                             <section class="datosTabla">
 
-                                <table  id="tablaEmple" class="display" data-toggle="table"> 
+                                <table  id="tablaEmple" class="display" data-toggle="table" > 
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -211,33 +216,42 @@ and open the template in the editor.
                                             <th>ESTADO</th>
                                             <th>ACTUALIZAR</th>
 
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-//                                        if (isset($_SESSION['listaCajeros'])) {
-//
-//                                            $registro = unserialize($_SESSION['listaCajeros']);
-//
-//                                            foreach ($registro as $dato) {
-//                                                echo "<tr>";
-//                                                echo "<td>" . $dato->getID_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getCEDULA_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getNOMBRES_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getAPELLIDOS_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getCIUDAD_NACIMIENTO_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getFECHA_NACIMIENTO_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getDIRECCION_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getTELEFONO_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getEMAIL_CAJ() . "</td>";
-//                                                echo "<td>" . $dato->getESTADO_CAJ() . "</td>";
-//                                                echo "<td><a href='../../controller/controller.php?opcion=cargar_cajero&id=" . $dato->getID_CAJ() . "' class=\"actualizar\"><i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i></a></td>";
-//
-//                                                echo "</tr>";
-//                                            }
-//                                        } else {
-//                                            
-//                                        }
+                                        if (isset($_SESSION['listaCajeros'])) {
+
+                                            $registro = unserialize($_SESSION['listaCajeros']);
+
+                                            foreach ($registro as $dato) {
+                                                echo "<tr>";
+                                                echo "<td>" . $dato->getID_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getCEDULA_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getNOMBRES_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getAPELLIDOS_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getCIUDAD_NACIMIENTO_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getFECHA_NACIMIENTO_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getDIRECCION_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getTELEFONO_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getEMAIL_CAJ() . "</td>";
+                                                echo "<td>" . $dato->getESTADO_CAJ() . "</td>";
+                                                echo "<td>   
+                                
+
+                        <form action=\"../../controller/con_main.php\" name=\"form\">
+                            <input type=\"hidden\" value=\"cargar_cajero\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"1\" name=\"id\">
+                            <button type=\"submit\" class=\"button_tbl\">
+                                <i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i>
+                            </button> </form></td> ";
+
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            
+                                        }
                                         ?>
                                     </tbody>
                                 </table>
