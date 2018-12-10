@@ -267,7 +267,7 @@ switch ($opcion) {
         $CAJERO = $_REQUEST['cajero'];
         $TRAJE = $_REQUEST['traje'];
         $FECHA_INICIO = $_REQUEST['tiempo_ini'];
-        $FECHA_FIN = $_REQUEST['tiempo_ini'];
+        $FECHA_FIN = $_REQUEST['tiempo_fin'];
         $VALOR = $_REQUEST['valor'];
 
         $alquiler->crearAlquiler($CLIENTE, $CAJERO, $TRAJE, $FECHA_INICIO, $FECHA_FIN, $VALOR);

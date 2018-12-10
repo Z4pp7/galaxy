@@ -116,7 +116,7 @@ $login = unserialize($_SESSION['sesion']);
                                         include '../../model/Cliente.php';
                                         $registro = unserialize($_SESSION['listaClientes']);
                                         foreach ($registro as $dato) {
-                                            $opcion = "<option value=\"" . $dato->getCEDULA_CLI() . "\">" . $dato->getAPELLIDOS_CLI()." ".$dato->getNOMBRES_CLI() . "</option> ";
+                                            $opcion = "<option value=\"" . $dato->getCEDULA_CLI() . "\">" . $dato->getAPELLIDOS_CLI() . " " . $dato->getNOMBRES_CLI() . "</option> ";
                                             echo $opcion;
                                         }
                                         ?>
@@ -128,7 +128,7 @@ $login = unserialize($_SESSION['sesion']);
                                         include '../../model/Cajero.php';
                                         $registro = unserialize($_SESSION['listaCajeros']);
                                         foreach ($registro as $dato) {
-                                            $opcion = "<option value=\"" .$dato->getCEDULA_CAJ() . "\">" . $dato->getAPELLIDOS_CAJ()." ".$dato->getNOMBRES_CAJ() ."</option> ";
+                                            $opcion = "<option value=\"" . $dato->getCEDULA_CAJ() . "\">" . $dato->getAPELLIDOS_CAJ() . " " . $dato->getNOMBRES_CAJ() . "</option> ";
                                             echo $opcion;
                                         }
                                         ?>
@@ -147,10 +147,18 @@ $login = unserialize($_SESSION['sesion']);
                                     </select>
                                     <div>Tiempo de Inicio</div>
                                     <i class="ico_tiempo fas fa-stopwatch"></i>
-                                    <input type="datetime-local" value="<?php echo date("Y-m-d H:i:s"); ?>" name="tiempo_ini" placeholder="Tiempo de Inicio" class="tiempo" required/></br>
+                                    <input type="date"
+                                           name="tiempo_ini" 
+                                           placeholder="dd/mm/aaaa" 
+                                           class="fecha" 
+                                           required/></br>
                                     <div>Tiempo Fin</div>
                                     <i class="ico_tiempo fas fa-stopwatch"></i>
-                                    <input type="datetime-local" value="<?php echo date("Y-m-d H:i:s"); ?>" name="tiempo_ini" placeholder="Tiempo de Inicio" class="tiempo" required/></br>
+                                    <input type="date"
+                                           name="tiempo_fin" 
+                                           placeholder="dd/mm/aaaa" 
+                                           class="fecha" 
+                                           required/></br>
                                     <div>Valor</div>
                                     <i class="ico_dollar fas fa-dollar-sign"></i>
                                     <input type="text" name="valor" placeholder="Valor" class="valor" required/></br>
