@@ -45,7 +45,7 @@ p{
 
 
 }
-.nombre,.cedula,.direccion,.telefono,.contrasena,.apellido, .fecha, .correo, .ciudad
+.nombre,.cedula,.direccion,.telefono,.contrasena,.apellido, .fecha, .correo, .ciudad,.valor,.tiempo
 {
 
     background-color:#fff;
@@ -73,12 +73,29 @@ div
 
 }
 
-.ico_cedula,.ico_user,.ico_usuarios,.ico_password,.ico_keyid,
+.ico_cedula,.ico_user,.ico_usuarios,.ico_password,.ico_keyid,.ico_tiempo,.ico_dollar, .ico_coche,
 .ico_calendario,.ico_calendario,.ico_telefono, .ico_direccion,
 .ico_correo, .ico_estaod, .ico_ciudad{
     color:#b2b2b2;
     font-size: 23px;   
 }
+
+
+
+
+.ico_coche
+{
+       padding-right: 8px;
+}
+
+.ico_tiempo{
+     padding-right: 15px;
+}
+
+.ico_dollar{
+     padding-right: 22px;
+}
+   
 
 .ico_keyid
 {
