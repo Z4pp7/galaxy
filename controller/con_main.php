@@ -4,13 +4,14 @@ require_once '../model/ModelLogin.php';
 require_once '../model/ModelCajero.php';
 require_once '../model/ModelUsuario.php';
 require_once '../model/ModelCliente.php';
+require_once '../model/ModelTraje.php';
 session_start();
 $opcion = $_REQUEST['opcion'];
 $login = new ModelLogin();
 $cajero = new ModelCajero();
 $usuario = new ModelUsuario();
 $cliente = new ModelCliente();
-
+$traje = new ModelTraje();
 
 switch ($opcion) {
 
@@ -30,6 +31,10 @@ switch ($opcion) {
 
             if ($sesion->getTIPO_USU() === "Administrador") {
 
+
+                $listaTrajes = $traje->getTrajes();
+                $_SESSION['listaTrajes'] = serialize($listaTrajes);
+
                 $listaUsuarios = $usuario->getUsuarios();
                 $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
 
@@ -40,6 +45,13 @@ switch ($opcion) {
                 $_SESSION['listaCajeros'] = serialize($listaCajeros);
                 header('Location: ../view/home/index.php');
             } else {
+
+                $listaTrajes = $traje->getTrajes();
+                $_SESSION['listaTrajes'] = serialize($listaTrajes);
+
+                $listaUsuarios = $usuario->getUsuarios();
+                $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+
 
                 $listaClientes = $cliente->getClientes();
                 $_SESSION['listaClientes'] = serialize($listaClientes);
@@ -160,12 +172,12 @@ switch ($opcion) {
         break;
 
     case 'cargar_cliente':
-        $ID= $_REQUEST['id'];
+        $ID = $_REQUEST['id'];
         $cli = $cliente->getCliente($ID);
         $_SESSION['cliente'] = serialize($cli);
         header('Location: ../view/clientes/cargar.php');
         break;
-    
+
     case 'eliminar_cliente':
         $ID_CLI = $_REQUEST['id'];
         $cliente->eliminarCliente($ID_CLI);
@@ -189,6 +201,52 @@ switch ($opcion) {
         $listaClientes = $cliente->getClientes();
         $_SESSION['listaClientes'] = serialize($listaClientes);
         header('Location: ../view/clientes/index.php');
+        break;
+
+
+    // TRAJES
+
+    case 'guardar_traje':
+
+
+        $COD_TRA = $_REQUEST['codigo'];
+        $CATEGORIA_TRA = $_REQUEST['categoria'];
+        $DESCRIPCION_TRA = $_REQUEST['descripcion'];
+        $NUM_PRENDAS_TRA = $_REQUEST['numero'];
+        $traje->crearTraje($COD_TRA, $CATEGORIA_TRA, $DESCRIPCION_TRA, $NUM_PRENDAS_TRA);
+        $listaTrajes = $traje->getTrajes();
+        $_SESSION['listaTrajes'] = serialize($listaTrajes);
+        header('Location: ../view/trajes/index.php');
+        break;
+
+    case 'cargar_traje':
+        $ID = $_REQUEST['id'];
+        $tra = $traje->getTraje($ID);
+        $_SESSION['traje'] = serialize($tra);
+        header('Location: ../view/trajes/cargar.php');
+        break;
+
+    case 'eliminar_traje':
+        $ID = $_REQUEST['id'];
+        $traje->eliminarTraje($ID);
+        $listaTrajes = $traje->getTrajes();
+        $_SESSION['listaTrajes'] = serialize($listaTrajes);
+        header('Location: ../view/trajes/index.php');
+        break;
+
+    case 'actualizar_traje':
+
+        $ID_TRA = $_REQUEST['id_traje'];
+        $COD_TRA = $_REQUEST['codigo'];
+        $CATEGORIA_TRA = $_REQUEST['categoria'];
+        $DESCRIPCION_TRA = $_REQUEST['descripcion'];
+        $NUM_PRENDAS_TRA = $_REQUEST['numero'];
+       $traje->actualizarTraje($ID_TRA, $COD_TRA, $CATEGORIA_TRA, $DESCRIPCION_TRA, $NUM_PRENDAS_TRA);
+        
+        
+              $listaTrajes = $traje->getTrajes();
+        $_SESSION['listaTrajes'] = serialize($listaTrajes);
+        header('Location: ../view/trajes/index.php');
         break;
 
 
