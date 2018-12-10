@@ -17,7 +17,7 @@ and open the template in the editor.
 
         <section class="titulo">
             <h1>GALAXY</h1>
-            <p>SISTEMA DE CONTROL DE INVENTARIO</p>
+            <p>ALQUILER DE TRAJES</p>
         </section>
 
         <br>

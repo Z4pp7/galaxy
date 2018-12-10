@@ -24,6 +24,7 @@ $login = unserialize($_SESSION['sesion']);
         <link href="../css/bootstrap-table.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../css/registroUsuario.css">
         <link rel="stylesheet" type="text/css" href="../css/menuToggle.css">
+             <link rel="shortcut icon" href="../img/planet.ico" />
 
         <script>
             $(document).ready(function () {
@@ -63,9 +64,9 @@ $login = unserialize($_SESSION['sesion']);
                         <a href="../home/index.php" > <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
                         <a href="../cajeros/index.php" > <i class="ico_t fas fa-user-tie"></i> Cajeros</a>
                         <a href="../usuarios/index.php"><i class="ico_u fa fa-user" aria-hidden="true"></i> Usuarios</a>
-                        <a href="../proveedores/index.php"><i class="ico_ d fas fa-dolly" aria-hidden="true"></i> Proveedores</a>
-                        <a href="../productos/index.php"><i class="ico_b fas fa-box" aria-hidden="true"></i> Productos</a>
-                        <a href="../facturas/index.php"><i class="ico_f fas fa-file-alt"></i> Facturas</a><br>
+     <a href="../clientes/index.php"><i class="ico_ d fas fa-user-tag" aria-hidden="true"></i> Clientes</a>
+                          <a href="../trajes/index.php"><i class="ico_b fas fa-tshirt" aria-hidden="true"></i> Trajes</a>
+                        <a href="../alquiler/index.php"><i class="ico_f fas fa-stopwatch"></i> Alquiler</a><br>
                         <hr style="width:75%; margin-left: 11%;">
                         <a href="../../controller/cerrarSesion.php"><i class="ico_a fas fa-sign-out-alt"></i> Cerrar sesión</a><br>
 
@@ -91,7 +92,7 @@ $login = unserialize($_SESSION['sesion']);
 
                 <div id="principal"> 
                     <section class="titulo_menu">
-                        <p>MÓDULO COMPRAS</p>
+                        <p>GALAXY</p>
                         <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
                         <h1>REGISTRO DE USUARIOS</h1>       
                     </section>

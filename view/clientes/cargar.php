@@ -9,7 +9,7 @@ and open the template in the editor.
 <?php
 include("../../controller/iniciarSesion.php");
 include '../../model/Usuario.php';
-include '../../model/Cajero.php';
+include '../../model/Cliente.php';
 $login = unserialize($_SESSION['sesion']);
 ?>
 <html>
@@ -68,7 +68,7 @@ $login = unserialize($_SESSION['sesion']);
                         <a href="../cajeros/index.php" > <i class="ico_t fas fa-user-tie"></i> Cajeros</a>
                         <a href="../usuarios/index.php"><i class="ico_u fa fa-user" aria-hidden="true"></i> Usuarios</a>
                         <a href="../clientes/index.php"><i class="ico_ d fas fa-user-tag" aria-hidden="true"></i> Clientes</a>
-                          <a href="../trajes/index.php"><i class="ico_b fas fa-tshirt" aria-hidden="true"></i> Trajes</a>
+                             <a href="../trajes/index.php"><i class="ico_b fas fa-tshirt" aria-hidden="true"></i> Trajes</a>
                         <a href="../alquiler/index.php"><i class="ico_f fas fa-stopwatch"></i> Alquiler</a><br>
                         <hr style="width:75%; margin-left: 11%;">
                         <a href="../../controller/cerrarSesion.php"><i class="ico_a fas fa-sign-out-alt"></i> Cerrar sesión</a><br>
@@ -91,22 +91,22 @@ $login = unserialize($_SESSION['sesion']);
                 <div id="principal"> 
 
                     <section class="titulo_menu">
-                        <p>MÓDULO COMPRAS</p>
+                        <p>GALAXY</p>
                         <div class="logueado"> <i class="ico_logueado fa fa-user" aria-hidden="true"></i> <?php echo $login->getNOMBRES_USU() . " " . $login->getAPELLIDOS_USU(); ?></div>
 
-                        <h1>REGISTRO DE CAJEROS</h1>       
+                        <h1>REGISTRO DE CLIENTES</h1>       
                     </section>
 
                     <div id="contenedor">
                         <div id="lateral2">
                             <?php
-                            $caj = unserialize($_SESSION['cajero']);
+                            $caj = unserialize($_SESSION['cliente']);
                             ?>
                             <form action="../../controller/con_main.php" name="form">
                                 <section class="datos">
                                     <div>Id</div>
                                     <i class="ico_keyid fas fa-key" aria-hidden="true"></i>
-                                    <input type="text" name="id_cajero" value="<?php echo $caj->getID_CAJ(); ?>"placeholder="Usuario" readonly="readonly"class="cedula" required/></br>
+                                    <input type="text" name="id_cliente" value="<?php echo $caj->getID_CLI(); ?>"placeholder="Usuario" readonly="readonly"class="cedula" required/></br>
 
                                     <div>Cédula/RUC/Pasaporte</div>
                                     <i class="ico_cedula fa fa-id-card" aria-hidden="true"></i>
@@ -118,7 +118,7 @@ $login = unserialize($_SESSION['sesion']);
                                            oninput="validarced();" 
                                            maxlength="10"
                                            class="cedula"
-                                           value="<?php echo $caj->getCEDULA_CAJ(); ?>"
+                                           value="<?php echo $caj->getCEDULA_CLI(); ?>"
                                            required/></br>
                                     <div>Nombres/Apellidos</div>
                                     <i class="ico_user fa fa-user" aria-hidden="true"></i>
@@ -128,7 +128,7 @@ $login = unserialize($_SESSION['sesion']);
                                            placeholder="Nombres" 
                                            class="nombre" 
                                            required 
-                                           value="<?php echo $caj->getNOMBRES_CAJ(); ?>"
+                                           value="<?php echo $caj->getNOMBRES_CLI(); ?>"
 
                                            /></br>
                                     <input type="text" 
@@ -137,7 +137,7 @@ $login = unserialize($_SESSION['sesion']);
                                            placeholder="Apellidos" 
                                            class="apellido" 
                                            required 
-                                           value="<?php echo $caj->getAPELLIDOS_CAJ(); ?>"
+                                           value="<?php echo $caj->getAPELLIDOS_CLI(); ?>"
 
                                            /></br>
 
@@ -147,7 +147,7 @@ $login = unserialize($_SESSION['sesion']);
                                            name="fecha" 
                                            placeholder="dd/mm/aaaa" 
                                            class="fecha" 
-                                           value="<?php echo $caj->getFECHA_NACIMIENTO_CAJ(); ?>"
+                                           value="<?php echo $caj->getFECHA_NACIMIENTO_CLI(); ?>"
                                            required/></br>  
                                     <div>Ciudad de nacimiento</div>
                                     <i class="ico_ciudad fas fa-map-signs"></i>
@@ -157,7 +157,7 @@ $login = unserialize($_SESSION['sesion']);
                                            placeholder="Ciudad" 
                                            class="ciudad" 
                                            required 
-                                           value="<?php echo $caj->getCIUDAD_NACIMIENTO_CAJ(); ?>"
+                                           value="<?php echo $caj->getCIUDAD_NACIMIENTO_CLI(); ?>"
 
                                            /></br>
                                     <div>Dirección</div>
@@ -168,7 +168,7 @@ $login = unserialize($_SESSION['sesion']);
                                            class="direccion" 
                                            id="direccion"  
                                            required
-                                           value="<?php echo $caj->getDIRECCION_CAJ(); ?>"
+                                           value="<?php echo $caj->getDIRECCION_CLI(); ?>"
 
                                            /></br>
                                     <div>Teléfono</div>
@@ -180,7 +180,7 @@ $login = unserialize($_SESSION['sesion']);
                                            class="telefono" 
                                            id="telefono"  
                                            required
-                                           value="<?php echo $caj->getTELEFONO_CAJ(); ?>"
+                                           value="<?php echo $caj->getTELEFONO_CLI(); ?>"
                                            /></br>
                                     <div>Correo electrónico</div>
                                     <i class="ico_correo far fa-envelope" aria-hidden="true"></i>
@@ -188,16 +188,10 @@ $login = unserialize($_SESSION['sesion']);
                                            name="correo"
                                            placeholder="Correo electrónico" 
                                            class="correo" 
-                                           value="<?php echo $caj->getEMAIL_CAJ(); ?>"
-                                           required/></b>
-                                    <div>Estado</div>
-                                    <i class="ico_estaod fas fa-power-off" aria-hidden="true"></i>
-                                    <select name="estado" class="tipo" >
-                                        <option value="<?php echo $caj->getESTADO_CAJ(); ?>"><?php echo $caj->getESTADO_CAJ(); ?></option>
-                                        <option value="Activo" >Activo</option> 
-                                        <option value="Inactivo">Inactivo</option> 
-                                    </select></br>
-                                    <input type="hidden" value="actualizar_cajero" name="opcion">
+                                           value="<?php echo $caj->getEMAIL_CLI(); ?>"
+                                           required/></br>
+
+                                    <input type="hidden" value="actualizar_cliente" name="opcion">
                                     <button type="submit" class="button-guardar" name="validar" >
                                         <i class="ico_guardar far fa-save" aria-hidden="true"></i>
                                     </button>
@@ -220,42 +214,50 @@ $login = unserialize($_SESSION['sesion']);
                                             <th>DIRECCIÓN</th>
                                             <th>TELÉFONO</th>
                                             <th>EMAIL</th>
-                                            <th>ESTADO</th>
+                                            <th>ELIMINAR</th>
                                             <th>ACTUALIZAR</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if (isset($_SESSION['listaCajeros'])) {
+                                        if (isset($_SESSION['listaClientes'])) {
 
-                                            $registro = unserialize($_SESSION['listaCajeros']);
+                                            $registro = unserialize($_SESSION['listaClientes']);
 
                                             foreach ($registro as $dato) {
-                                                echo "<tr>";
-                                                echo "<td>" . $dato->getID_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getCEDULA_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getNOMBRES_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getAPELLIDOS_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getCIUDAD_NACIMIENTO_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getFECHA_NACIMIENTO_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getDIRECCION_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getTELEFONO_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getEMAIL_CAJ() . "</td>";
-                                                echo "<td>" . $dato->getESTADO_CAJ() . "</td>";
-
-
+                                                  echo "<tr>";
+                                                echo "<td>" . $dato->getID_CLI() . "</td>";
+                                                echo "<td>" . $dato->getCEDULA_CLI() . "</td>";
+                                                echo "<td>" . $dato->getNOMBRES_CLI() . "</td>";
+                                                echo "<td>" . $dato->getAPELLIDOS_CLI() . "</td>";
+                                                echo "<td>" . $dato->getCIUDAD_NACIMIENTO_CLI() . "</td>";
+                                                echo "<td>" . $dato->getFECHA_NACIMIENTO_CLI() . "</td>";
+                                                echo "<td>" . $dato->getDIRECCION_CLI() . "</td>";
+                                                echo "<td>" . $dato->getTELEFONO_CLI() . "</td>";
+                                                echo "<td>" . $dato->getEMAIL_CLI() . "</td>";
+                                  
+                                                
+                                                echo     "<td>
+                                                    <form action=\"../../controller/con_main.php\" name=\"form\">
+                            <input type=\"hidden\" value=\"eliminar_cliente\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"".$dato->getID_CLI()."\" name=\"id\">
+                            <button type=\"submit\" class=\"button_tbl\">
+                                <i class=\"ico_borrar fas fa-trash\" aria-hidden=\"true\"></i>
+                            </button> </form></td> ";
+                                                
+                                                
+                                                
                                                 echo "<td>   
                                 
 
                         <form action=\"../../controller/con_main.php\" name=\"form\">
-                            <input type=\"hidden\" value=\"cargar_cajero\" name=\"opcion\">
-                            <input type=\"hidden\" value=\"" . $dato->getID_CAJ() . "\" name=\"id\">
+                            <input type=\"hidden\" value=\"cargar_cliente\" name=\"opcion\">
+                            <input type=\"hidden\" value=\"".$dato->getID_CLI()."\" name=\"id\">
                             <button type=\"submit\" class=\"button_tbl\">
                                 <i class=\"ico_actualizar fas fa-pencil-alt\" aria-hidden=\"true\"></i>
                             </button> </form></td> ";
 
-                                                echo "</tr>";
                                                 echo "</tr>";
                                             }
                                         } else {

@@ -3,18 +3,21 @@
 require_once '../model/ModelLogin.php';
 require_once '../model/ModelCajero.php';
 require_once '../model/ModelUsuario.php';
+require_once '../model/ModelCliente.php';
 session_start();
 $opcion = $_REQUEST['opcion'];
 $login = new ModelLogin();
 $cajero = new ModelCajero();
 $usuario = new ModelUsuario();
+$cliente = new ModelCliente();
+
 
 switch ($opcion) {
 
     case 'entrar':
-        
-                     
-        
+
+
+
         $user = $_REQUEST['usuario'];
         $contrasena = $_REQUEST['contrasena'];
         $sesion = $login->verificacionUsuario($user, $contrasena);
@@ -30,32 +33,32 @@ switch ($opcion) {
                 $listaUsuarios = $usuario->getUsuarios();
                 $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
 
-//                $listaProveedor = $proveedor->getProveedores();
-//                $_SESSION['listaProveedor'] = serialize($listaProveedor);
+                $listaClientes = $cliente->getClientes();
+                $_SESSION['listaClientes'] = serialize($listaClientes);
 
                 $listaCajeros = $cajero->getCajeros();
                 $_SESSION['listaCajeros'] = serialize($listaCajeros);
                 header('Location: ../view/home/index.php');
             } else {
 
-//                $listaProveedor = $proveedor->getProveedores();
-//                $_SESSION['listaProveedor'] = serialize($listaProveedor);
+                $listaClientes = $cliente->getClientes();
+                $_SESSION['listaClientes'] = serialize($listaClientes);
 
                 $listaCajeros = $cajero->getCajeros();
                 $_SESSION['listaCajeros'] = serialize($listaCajeros);
-                      header('Location: ../view/home/index.php');
+                header('Location: ../view/home/index.php');
 
 //                header('Location: ../view/homeCajero/index.php');
             }
         } else {
-             header('Location: ../index.php');
+            header('Location: ../index.php');
         }
 
-   
+
         break;
 
 
-        // CAJERO
+    // CAJERO
     case 'guardar_cajero':
 
 
@@ -98,10 +101,10 @@ switch ($opcion) {
         $_SESSION['listaCajeros'] = serialize($listaCajeros);
         header('Location: ../view/cajeros/index.php');
         break;
-    
+
     // USUARIO
-    
-     case 'guardar_usuario':
+
+    case 'guardar_usuario':
         $ID_CAJ = $_REQUEST['cajero'];
         $TIPO_USU = $_REQUEST['tipo'];
         $NOMBRE_USU = $_REQUEST['nombre'];
@@ -134,6 +137,58 @@ switch ($opcion) {
         $listaUsuarios = $usuario->getUsuarios();
         $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
         header('Location: ../view/usuarios/index.php');
+        break;
+
+    //CLIENTE
+
+    case 'guardar_cliente':
+
+
+        $CEDULA_CLI = $_REQUEST['cedula'];
+        $NOMBRES_CLI = $_REQUEST['nombres'];
+        $APELLIDOS_CLI = $_REQUEST['apellidos'];
+        $CIUDAD_NACIMIENTO_CLI = $_REQUEST['ciudad'];
+        $FECHA_NACIMIENTO_CLI = $_REQUEST['fecha'];
+        $DIRECCION_CLI = $_REQUEST['direccion'];
+        $TELEFONO_CLI = $_REQUEST['telefono'];
+        $EMAIL_CLI = $_REQUEST['correo'];
+
+        $cliente->crearCliente($CEDULA_CLI, $NOMBRES_CLI, $APELLIDOS_CLI, $CIUDAD_NACIMIENTO_CLI, $FECHA_NACIMIENTO_CLI, $DIRECCION_CLI, $TELEFONO_CLI, $EMAIL_CLI);
+        $listaClientes = $cliente->getClientes();
+        $_SESSION['listaClientes'] = serialize($listaClientes);
+        header('Location: ../view/clientes/index.php');
+        break;
+
+    case 'cargar_cliente':
+        $ID= $_REQUEST['id'];
+        $cli = $cliente->getCliente($ID);
+        $_SESSION['cliente'] = serialize($cli);
+        header('Location: ../view/clientes/cargar.php');
+        break;
+    
+    case 'eliminar_cliente':
+        $ID_CLI = $_REQUEST['id'];
+        $cliente->eliminarCliente($ID_CLI);
+        $listaClientes = $cliente->getClientes();
+        $_SESSION['listaClientes'] = serialize($listaClientes);
+        header('Location: ../view/clientes/index.php');
+        break;
+
+    case 'actualizar_cliente':
+
+        $ID_CLI = $_REQUEST['id_cliente'];
+        $CEDULA_CLI = $_REQUEST['cedula'];
+        $NOMBRES_CLI = $_REQUEST['nombres'];
+        $APELLIDOS_CLI = $_REQUEST['apellidos'];
+        $CIUDAD_NACIMIENTO_CLI = $_REQUEST['ciudad'];
+        $FECHA_NACIMIENTO_CLI = $_REQUEST['fecha'];
+        $DIRECCION_CLI = $_REQUEST['direccion'];
+        $TELEFONO_CLI = $_REQUEST['telefono'];
+        $EMAIL_CLI = $_REQUEST['correo'];
+        $cliente->actualizarCliente($ID_CLI, $CEDULA_CLI, $NOMBRES_CLI, $APELLIDOS_CLI, $CIUDAD_NACIMIENTO_CLI, $FECHA_NACIMIENTO_CLI, $DIRECCION_CLI, $TELEFONO_CLI, $EMAIL_CLI);
+        $listaClientes = $cliente->getClientes();
+        $_SESSION['listaClientes'] = serialize($listaClientes);
+        header('Location: ../view/clientes/index.php');
         break;
 
 
