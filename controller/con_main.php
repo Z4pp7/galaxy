@@ -5,6 +5,7 @@ require_once '../model/ModelCajero.php';
 require_once '../model/ModelUsuario.php';
 require_once '../model/ModelCliente.php';
 require_once '../model/ModelTraje.php';
+require_once '../model/ModelAlquiler.php';
 session_start();
 $opcion = $_REQUEST['opcion'];
 $login = new ModelLogin();
@@ -12,6 +13,7 @@ $cajero = new ModelCajero();
 $usuario = new ModelUsuario();
 $cliente = new ModelCliente();
 $traje = new ModelTraje();
+$alquiler = new ModelAlquiler();
 
 switch ($opcion) {
 
@@ -32,6 +34,10 @@ switch ($opcion) {
             if ($sesion->getTIPO_USU() === "Administrador") {
 
 
+
+                $listaAlquiler = $alquiler->getAlquiler();
+                $_SESSION['listaAlquileres'] = serialize($listaAlquiler);
+
                 $listaTrajes = $traje->getTrajes();
                 $_SESSION['listaTrajes'] = serialize($listaTrajes);
 
@@ -51,6 +57,9 @@ switch ($opcion) {
 
                 $listaUsuarios = $usuario->getUsuarios();
                 $_SESSION['listaUsuarios'] = serialize($listaUsuarios);
+
+                $listaAlquiler = $alquiler->getAlquiler();
+                $_SESSION['listaAlquileres'] = serialize($listaAlquiler);
 
 
                 $listaClientes = $cliente->getClientes();
@@ -241,13 +250,33 @@ switch ($opcion) {
         $CATEGORIA_TRA = $_REQUEST['categoria'];
         $DESCRIPCION_TRA = $_REQUEST['descripcion'];
         $NUM_PRENDAS_TRA = $_REQUEST['numero'];
-       $traje->actualizarTraje($ID_TRA, $COD_TRA, $CATEGORIA_TRA, $DESCRIPCION_TRA, $NUM_PRENDAS_TRA);
-        
-        
-              $listaTrajes = $traje->getTrajes();
+        $traje->actualizarTraje($ID_TRA, $COD_TRA, $CATEGORIA_TRA, $DESCRIPCION_TRA, $NUM_PRENDAS_TRA);
+
+
+        $listaTrajes = $traje->getTrajes();
         $_SESSION['listaTrajes'] = serialize($listaTrajes);
         header('Location: ../view/trajes/index.php');
         break;
+
+    //ALQUILER
+
+    case 'guardar_alquiler':
+
+
+        $CLIENTE = $_REQUEST['cliente'];
+        $CAJERO = $_REQUEST['cajero'];
+        $TRAJE = $_REQUEST['traje'];
+        $FECHA_INICIO = $_REQUEST['tiempo_ini'];
+        $FECHA_FIN = $_REQUEST['tiempo_ini'];
+        $VALOR = $_REQUEST['valor'];
+
+        $alquiler->crearAlquiler($CLIENTE, $CAJERO, $TRAJE, $FECHA_INICIO, $FECHA_FIN, $VALOR);
+        $listaAlquiler = $alquiler->getAlquiler();
+        $_SESSION['listaAlquileres'] = serialize($listaAlquiler);
+
+        header('Location: ../view/trajes/index.php');
+        break;
+
 
 
 

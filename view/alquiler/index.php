@@ -111,7 +111,7 @@ $login = unserialize($_SESSION['sesion']);
 
                                     <div>Cliente</div>
                                     <i class="ico_user fas fa-user" aria-hidden="true"></i>
-                                    <select name="id_cli" class="tipo" >
+                                    <select name="cliente" class="tipo" >
                                         <?php
                                         include '../../model/Cliente.php';
                                         $registro = unserialize($_SESSION['listaClientes']);
@@ -123,7 +123,7 @@ $login = unserialize($_SESSION['sesion']);
                                     </select></br>
                                     <div>Cajero</div>
                                     <i class="ico_user fa fa-user-tie" aria-hidden="true"></i>
-                                    <select name="id_emp" class="tipo" >
+                                    <select name="cajero" class="tipo" >
                                         <?php
                                         include '../../model/Cajero.php';
                                         $registro = unserialize($_SESSION['listaCajeros']);
@@ -135,7 +135,7 @@ $login = unserialize($_SESSION['sesion']);
                                     </select></br>
                                     <div>Traje</div>
                                     <i class="ico_coche fas fa-tshirt" aria-hidden="true"></i>
-                                    <select name="id_coche" class="tipo">
+                                    <select name="traje" class="tipo">
                                         <?php
                                         include '../../model/Traje.php';
                                         $registro = unserialize($_SESSION['listaTrajes']);
