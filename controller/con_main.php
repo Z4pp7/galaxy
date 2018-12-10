@@ -274,7 +274,7 @@ switch ($opcion) {
         $listaAlquiler = $alquiler->getAlquiler();
         $_SESSION['listaAlquileres'] = serialize($listaAlquiler);
 
-        header('Location: ../view/trajes/index.php');
+        header('Location: ../view/alquiler/index.php');
         break;
 
 
